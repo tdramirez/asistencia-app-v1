@@ -85,7 +85,7 @@ public class DB extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sql = "SELECT curso_paralelo.id, cursos.nombre||' '||paralelos.nombre as nombre FROM curso_paralelo JOIN cursos ON cursos.id = curso_paralelo.id_curso JOIN paralelos ON paralelos.id = curso_paralelo.id_paralelo";
+        String sql = "SELECT curso_paralelo.id, cursos.nombre||'/'||paralelos.nombre as nombre FROM curso_paralelo JOIN cursos ON cursos.id = curso_paralelo.id_curso JOIN paralelos ON paralelos.id = curso_paralelo.id_paralelo";
 
         db.execSQL(sql);
 
@@ -95,6 +95,10 @@ public class DB extends SQLiteOpenHelper {
     }
 
     public ArrayList getAllStudents(int id_cours){
+        ArrayList arrayCursos = new ArrayList();
+
+
         String sql = "SELECT * FROM estudiantes WHERE id_curso_paralelo = "+ id_cours;
+        return arrayCursos;
     }
 }
