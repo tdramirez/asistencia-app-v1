@@ -94,11 +94,11 @@ public class DB extends SQLiteOpenHelper {
         return arrayCursos;
     }
 
-    public ArrayList getAllStudents(int id_cours){
-        ArrayList arrayCursos = new ArrayList();
+    public ArrayList getAllStudents(String id_cours){
+        ArrayList arrayEstudiantes = new ArrayList();
 
 
         String sql = "SELECT * FROM estudiantes WHERE id_curso_paralelo = "+ id_cours;
-        return arrayCursos;
+        return arrayEstudiantes;
     }
 }

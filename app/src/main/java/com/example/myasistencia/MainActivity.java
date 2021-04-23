@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.content.Intent;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Collections.addAll(listaCursos, strCursos);
         comboAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listaCursos);
         spinner1.setAdapter(comboAdapter);
+        nombreCurso = (String)spinner1.getSelectedItem();
+
 
 
 
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Hello "+nombreCurso,Toast.LENGTH_SHORT).show();
+
+
                 Intent intent = new Intent(v.getContext(), ListaEstudiantes.class);
                 intent.putExtra("parametro", nombreCurso);
                 startActivity(intent);
@@ -56,12 +62,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (parent.getId()){
-            case R.id.spinner_cursos:
-                //Almaceno el nombre de la fruta seleccionada
-                nombreCurso = strCursos[position];
-                break;
-        }
+         nombreCurso = (String)spinner1.getSelectedItem();
     }
 
     @Override

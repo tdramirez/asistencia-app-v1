@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class ListaEstudiantes extends AppCompatActivity {
 
     private TextView text1;
-    Bundle nombreCuro = (Bundle)getIntent().getExtras();
+    //String nombreCuro = getIntent().getExtras().getString("parametro");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class ListaEstudiantes extends AppCompatActivity {
         setContentView(R.layout.activity_lista_estudiantes);
 
         text1 = (TextView)findViewById(R.id.titulo);
-        text1.setText("Curso "+nombreCuro.getString("parametro"));
+        text1.setText("Curso ");
 
     }
 }
