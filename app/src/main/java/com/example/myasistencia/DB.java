@@ -4,7 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class DB extends SQLiteOpenHelper {
 
@@ -79,7 +80,21 @@ public class DB extends SQLiteOpenHelper {
     }
 
 
-    public List getAllCours(){
-        
+    public ArrayList getAllCours(){
+        ArrayList arrayCursos = new ArrayList();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql = "SELECT curso_paralelo.id, cursos.nombre||' '||paralelos.nombre as nombre FROM curso_paralelo JOIN cursos ON cursos.id = curso_paralelo.id_curso JOIN paralelos ON paralelos.id = curso_paralelo.id_paralelo";
+
+        db.execSQL(sql);
+
+        System.out.print("hola");
+
+        return arrayCursos;
+    }
+
+    public ArrayList getAllStudents(int id_cours){
+        String sql = "SELECT * FROM estudiantes WHERE id_curso_paralelo = "+ id_cours;
     }
 }
